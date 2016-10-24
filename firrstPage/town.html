@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrapper{
+
+
+        }
+
+        #townBorder{
+            border: 3px solid black;
+            border-radius: 270px;
+            width: 800px;
+            margin: 0 auto;
+            height: 500px;
+            top: 100px;
+        }
+        .buildingPlace{
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: 2px solid blueviolet;
+        }
+
+        canvas{
+            width: 800px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 0 auto;
+            display: block;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+
+    <div id="wrapper">
+        <label>X:</label>
+        <input id="xCoordinate" type="text">
+        <label>Y:</label>
+        <input id="yCoordinate" type="text">
+
+        <button id="create">Create</button>
+
+        <canvas id="myCanvas" width="800" height="500" style="border:1px solid #d3d3d3;">
+            Your browser does not support the HTML5 canvas tag.</canvas>
+    </div>
+
+
+
+        <script>
+
+
+
+            function drawElipse(x, y, height, width, isFill) {
+                ctx.fillStyle="#F0F8FF";
+
+                var height01 = height ? height : 40;
+                var width01 = width ? width : 50;
+
+                ctx.beginPath();
+                ctx.ellipse(x, y, height01, width01, 90 * Math.PI/180, 0, 2 * Math.PI);
+
+                ctx.stroke();
+
+                if(isFill){
+                    ctx.fill();
+                }
+            }
+
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+
+
+            drawElipse(370, 250, 250, 300);
+
+            drawElipse(220, 150, null, null, true);
+
+            drawElipse(355, 55, null, null, true);
+
+            drawElipse(500, 120, null, null, true);
+
+            drawElipse(550, 320, null, null, true);
+
+            drawElipse(450, 400, null, null, true);
+
+            drawElipse(570, 220, null, null, true);
+
+            drawElipse(320, 420, null, null, true);
+
+            drawElipse(180, 320, null, null, true);
+
+
+            drawElipse(370, 250, 60, 70, true);
+
+            function getMousePos(canvas, evt) {
+                var rect = canvas.getBoundingClientRect();
+                return {
+                    x: evt.clientX - rect.left,
+                    y: evt.clientY - rect.top
+                };
+            }
+            c.addEventListener('mousemove', function(evt) {
+                var mousePos = getMousePos(c, evt);
+                var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+                console.log(mousePos);
+
+            }, false);
+
+
+        </script>
+
+</body>
+</html>
